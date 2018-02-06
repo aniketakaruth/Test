@@ -1,16 +1,38 @@
 package com.mowize.testapp;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
-public class MainActivity extends AppCompatActivity {
+import com.mowize.testapp.models.MainCategory;
+
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity implements MainActivityView {
+
+    RecyclerView list;
+    MainActivityController controller;
+    List<MainCategory> listOfCategories;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //There is Git
 
-        //This is some code from Ravi
+        controller = new MainActivityController(this, getApplicationContext());
+
+        list = (RecyclerView) findViewById(R.id.list);
+        list.setLayoutManager(new LinearLayoutManager(this));
+
+        controller.makeServerRequest();
+
+
+    }
+
+    @Override
+    public void showData(List<MainCategory> listOfCategories) {
+        this.listOfCategories = listOfCategories;
+
     }
 }
