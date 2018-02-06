@@ -1,6 +1,7 @@
 package com.mowize.testapp;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.mowize.testapp.models.MainCategory;
 import com.mowize.testapp.models.SubCategory;
@@ -30,10 +31,38 @@ public class MainActivityController {
 
     public void makeServerRequest() {
 
-
 //        StringRequest request = new StringRequest(Request.Method.POST, "http://52.25.112.60/Services", new Response.Listener<String>() {
 //            @Override
 //            public void onResponse(String response) {
+//        try {
+//            JSONObject jsonObject = new JSONObject(response);
+//            JSONArray array = jsonObject.getJSONArray("categories_list");
+//
+//            List<MainCategory> listOfMainCategories = new ArrayList<>();
+//
+//            for (int i = 0; i < array.length(); i++) {
+//
+//                JSONObject object = array.getJSONObject(i);
+//
+//                MainCategory mainCategory = new MainCategory(object.getInt("id"), object.getString("category_name"));
+//                JSONArray subs = object.getJSONArray("subcategory_children");
+//
+//                for (int j = 0; j < subs.length(); j++) {
+//
+//                    JSONObject cat = subs.getJSONObject(j);
+//                    SubCategory subCategory = new SubCategory(cat.getInt("id"), cat.getString("category_name"));
+//                    mainCategory.addSubCategory(subCategory);
+//                }
+//
+//                listOfMainCategories.add(mainCategory);
+//
+//            }
+//
+//            view.showData(listOfMainCategories);
+//
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
 //
 //            }
 //        }, new Response.ErrorListener() {
@@ -71,6 +100,7 @@ public class MainActivityController {
 //        };
 //
 //        queue.addToRequestQueue(request);
+
 
         try {
             JSONObject jsonObject = new JSONObject(response);

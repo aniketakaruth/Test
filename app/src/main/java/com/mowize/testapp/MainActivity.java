@@ -15,6 +15,8 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
     MainActivityController controller;
     List<MainCategory> listOfCategories;
 
+    MainCategoryAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +35,14 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
     @Override
     public void showData(List<MainCategory> listOfCategories) {
         this.listOfCategories = listOfCategories;
+
+        adapter = new MainCategoryAdapter(listOfCategories, new MainCategoryAdapter.onRowSelected() {
+            @Override
+            public void onRowSelected(MainCategory mainCategory) {
+
+            }
+        });
+        list.setAdapter(adapter);
 
     }
 }
